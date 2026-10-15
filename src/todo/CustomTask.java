@@ -1,10 +1,37 @@
 package todo;
 public class CustomTask
 {
-    //~ Fields ................................................................
+private String name;
+private String taskType;
+private double estimatedHours;
+private int priority;
 
-    //~ Constructors ..........................................................
+public CustomTask(String name, String taskType, double estimatedHours, int priority){
+    this.name = name;
+    this.taskType = taskType;
+    this.estimatedHours = estimatedHours;
+    this.priority = priority;
+}
 
-    //~Public  Methods ........................................................
+public String getName(){
+    return name;
+}
 
+public String getTaskType(){
+    return taskType;
+}
+
+public double getEstimatedHours(){
+    return estimatedHours;
+}
+
+public int getPriority(){
+    return priority;
+}
+
+public String toString(){
+    return name + " (" + taskType + ")"
+    + " | Hours: " + estimatedHours
+    + " | Priority: " + priority;
+}
 }
