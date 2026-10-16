@@ -59,5 +59,16 @@ public double getHoursInput(String message){
     }
 }
 
-public boolean isValidPriority
+public boolean isValidPriority(int priority){
+    return priority >= 1 && priority <= 5;
+}
+
+public boolean isValidHours(double hours){
+    return !Double.isNaN(hours) && !Double.isInfinite(hours) && hours >= 0;
+}
+
+public boolean isValidPosition(int position, int size)
+{
+    return position >= 1 && position <= size;
+}
 }
