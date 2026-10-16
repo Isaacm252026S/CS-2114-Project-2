@@ -1,3 +1,4 @@
+
 package todo.tests;
 
 import student.TestCase;
@@ -5,16 +6,19 @@ import todo.Chore;
 
 // -------------------------------------------------------------------------
 /**
- * Write a one-sentence summary of your class here. Follow it with additional
- * details about its purpose, what abstraction it represents, and how to use it.
+ * Tests the methods in Chore
  * 
- * @author frogk
+ * @author Isaac Morris (Isaacm25@vt.edu)
  * @version Oct 16, 2026
  */
 public class ChoreTest
     extends TestCase
 {
     
+    /**
+     * A new Chore method named Clean that will take 1.0 hours to complete and
+     * has a priority of 1
+     */
     Chore clean = new Chore("Clean", 1.0, 1);
 
     // ----------------------------------------------------------
