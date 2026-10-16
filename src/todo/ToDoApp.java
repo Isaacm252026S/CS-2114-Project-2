@@ -8,7 +8,13 @@ public class ToDoApp
 
     public ToDoApp()
     {
-        taskManager = new TaskManager();
+        this(new TaskManager());
+    }
+
+
+    public ToDoApp(TaskManager taskManager)
+    {
+        this.taskManager = taskManager;
         inputHandler = new InputHandler();
         running = true;
     }
