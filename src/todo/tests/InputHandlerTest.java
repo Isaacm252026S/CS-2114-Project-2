@@ -1,5 +1,10 @@
 package todo.tests;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import student.TestCase;
 // import static org.junit.jupiter.api.Assertions.*;
 // import org.junit.jupiter.api.BeforeEach;
@@ -19,9 +24,31 @@ public class InputHandlerTest
 {
 
     private InputHandler inputHandler;
+    private InputStream originalInput;
+    private PrintStream originalOutput;
+    private ByteArrayOutputStream capturedOutput;
 
     public void setUp()
     {
+        originalInput = System.in;
+        originalOutput = System.out;
+        capturedOutput = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(capturedOutput));
+        inputHandler = new InputHandler();
+    }
+
+
+    public void tearDown()
+    {
+        System.setIn(originalInput);
+        System.setOut(originalOutput);
+    }
+
+
+    private void setInput(String input)
+    {
+        System.setIn(new ByteArrayInputStream(
+            input.getBytes(StandardCharsets.UTF_8)));
         inputHandler = new InputHandler();
     }
 
@@ -31,8 +58,7 @@ public class InputHandlerTest
 
     public void testGetStringInput()
     {
-        systemIn().setInput("Task name\n");
-        inputHandler = new InputHandler();
+        setInput("Task name\n");
 
         assertEquals("Task name", inputHandler.getStringInput("Name: "));
     }
@@ -40,11 +66,10 @@ public class InputHandlerTest
 
     public void testGetStringInputRepeatsForBlankInput()
     {
-        systemIn().setInput("\n   \nTask name\n");
-        inputHandler = new InputHandler();
+        setInput("\n   \nTask name\n");
 
         assertEquals("Task name", inputHandler.getStringInput("Name: "));
-        assertTrue(systemOut().getHistory().contains(
+        assertTrue(capturedOutput.toString().contains(
             "Input cannot be empty."));
     }
 
@@ -54,8 +79,7 @@ public class InputHandlerTest
 
     public void testGetAssignmentTypeHomework()
     {
-        systemIn().setInput("HOMEWORK\n");
-        inputHandler = new InputHandler();
+        setInput("HOMEWORK\n");
 
         assertEquals("homework", inputHandler.getAssignmentTypeInput("Type: "));
     }
@@ -63,8 +87,7 @@ public class InputHandlerTest
 
     public void testGetAssignmentTypeExam()
     {
-        systemIn().setInput("exam\n");
-        inputHandler = new InputHandler();
+        setInput("exam\n");
 
         assertEquals("exam", inputHandler.getAssignmentTypeInput("Type: "));
     }
@@ -72,8 +95,7 @@ public class InputHandlerTest
 
     public void testGetAssignmentTypeProject()
     {
-        systemIn().setInput("project\n");
-        inputHandler = new InputHandler();
+        setInput("project\n");
 
         assertEquals("project", inputHandler.getAssignmentTypeInput("Type: "));
     }
@@ -81,11 +103,10 @@ public class InputHandlerTest
 
     public void testGetAssignmentTypeRepeatsForInvalidInput()
     {
-        systemIn().setInput("quiz\nproject\n");
-        inputHandler = new InputHandler();
+        setInput("quiz\nproject\n");
 
         assertEquals("project", inputHandler.getAssignmentTypeInput("Type: "));
-        assertTrue(systemOut().getHistory().contains(
+        assertTrue(capturedOutput.toString().contains(
             "Enter homework, exam, or project."));
     }
 
@@ -95,8 +116,7 @@ public class InputHandlerTest
 
     public void testGetDueDateInput()
     {
-        systemIn().setInput("2026-10-20\n");
-        inputHandler = new InputHandler();
+        setInput("2026-10-20\n");
 
         assertEquals("2026-10-20", inputHandler.getDueDateInput("Date: "));
     }
@@ -104,11 +124,10 @@ public class InputHandlerTest
 
     public void testGetDueDateInputRepeatsForInvalidDate()
     {
-        systemIn().setInput("2026-02-30\n2026-02-28\n");
-        inputHandler = new InputHandler();
+        setInput("2026-02-30\n2026-02-28\n");
 
         assertEquals("2026-02-28", inputHandler.getDueDateInput("Date: "));
-        assertTrue(systemOut().getHistory().contains(
+        assertTrue(capturedOutput.toString().contains(
             "Enter a valid date in YYYY-MM-DD format."));
     }
 
@@ -118,8 +137,7 @@ public class InputHandlerTest
 
     public void testGetUserIntInput()
     {
-        systemIn().setInput("3\n");
-        inputHandler = new InputHandler();
+        setInput("3\n");
 
         assertEquals(3, inputHandler.getUserIntInput("Choice: ", 1, 5));
     }
@@ -127,13 +145,12 @@ public class InputHandlerTest
 
     public void testGetUserIntInputRepeatsForInvalidInputs()
     {
-        systemIn().setInput("text\n6\n0\n2\n");
-        inputHandler = new InputHandler();
+        setInput("text\n6\n0\n2\n");
 
         assertEquals(2, inputHandler.getUserIntInput("Choice: ", 1, 5));
-        assertTrue(systemOut().getHistory().contains(
+        assertTrue(capturedOutput.toString().contains(
             "Please enter a whole number."));
-        assertTrue(systemOut().getHistory().contains(
+        assertTrue(capturedOutput.toString().contains(
             "Enter a number from 1 to 5."));
     }
 
@@ -143,8 +160,7 @@ public class InputHandlerTest
 
     public void testGetHoursInput()
     {
-        systemIn().setInput("2.5\n");
-        inputHandler = new InputHandler();
+        setInput("2.5\n");
 
         assertEquals(2.5, inputHandler.getHoursInput("Hours: "), 0.1);
     }
@@ -152,22 +168,20 @@ public class InputHandlerTest
 
     public void testGetHoursInputRepeatsForInvalidNumber()
     {
-        systemIn().setInput("hours\n2.5\n");
-        inputHandler = new InputHandler();
+        setInput("hours\n2.5\n");
 
         assertEquals(2.5, inputHandler.getHoursInput("Hours: "), 0.1);
-        assertTrue(systemOut().getHistory().contains(
+        assertTrue(capturedOutput.toString().contains(
             "Please enter a valid number."));
     }
 
 
     public void testGetHoursInputRepeatsForNegativeAndNonFiniteNumbers()
     {
-        systemIn().setInput("-1\nNaN\nInfinity\n2.5\n");
-        inputHandler = new InputHandler();
+        setInput("-1\nNaN\nInfinity\n2.5\n");
 
         assertEquals(2.5, inputHandler.getHoursInput("Hours: "), 0.1);
-        assertTrue(systemOut().getHistory().contains(
+        assertTrue(capturedOutput.toString().contains(
             "Hours must be 0 or greater."));
     }
 
