@@ -14,29 +14,50 @@ import todo.Chore;
 public class ChoreTest
     extends TestCase
 {
-
-    Chore clean = new Chore("Clean", 1, 1);
+    
+    Chore clean = new Chore("Clean", 1.0, 1);
 
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * Tests getName()
      */
 
     public void testGetName()
     {
         assertEquals("Clean", clean.getName());
-        
+
     }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests getEstimatedHours()
+     */
     public void testGetEstimatedHours()
     {
-        
+        assertEquals(1.0, clean.getEstimatedHours(), 0.1);
+
     }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests getPriority()
+     */
     public void testGetPriority()
     {
-        
+        assertEquals(1, clean.getPriority());
+
     }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests toString()
+     */
     public void testToString()
     {
-        
+        assertEquals("Clean | Hours: 1.0 | Priority: 1", clean.toString());
+
     }
 }
