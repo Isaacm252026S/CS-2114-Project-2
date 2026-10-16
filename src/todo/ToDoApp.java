@@ -46,8 +46,8 @@ public void addNewTask(){
     String name = inputHandler.getStringInput("Task name: ");
 
     if (type == 1){
-        String assignmentType = inputHandler.getStringInput("Assignment type (homework/exam/project): ");
-        String dueDate = inputHandler.getStringInput("Due date: ");
+        String assignmentType = inputHandler.getAssignmentTypeInput("Assignment type (homework/exam/project): ");
+        String dueDate = inputHandler.getDueDateInput("Due date (YYYY-MM-DD): ");
         double hours = inputHandler.getHoursInput("Estimated hours to finish: ");
         int priority = inputHandler.getUserIntInput("Priority (1-5): ", 1, 5);
         SchoolAssignment task = new SchoolAssignment(name, assignmentType, dueDate, hours, priority);

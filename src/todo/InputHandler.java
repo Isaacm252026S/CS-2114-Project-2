@@ -1,4 +1,7 @@
 package todo;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.Locale;
 import java.util.Scanner;
 public class InputHandler
 {
@@ -17,6 +20,31 @@ public String getStringInput(String message){
         input = scanner.nextLine();
     }
     return input;
+}
+
+public String getAssignmentTypeInput(String message){
+    while (true){
+        String input = getStringInput(message).trim();
+        if (input.equalsIgnoreCase("homework")
+            || input.equalsIgnoreCase("exam")
+            || input.equalsIgnoreCase("project")){
+            return input.toLowerCase(Locale.ROOT);
+        }
+        System.out.println("Enter homework, exam, or project.");
+    }
+}
+
+public String getDueDateInput(String message){
+    while (true){
+        String input = getStringInput(message).trim();
+        try{
+            LocalDate.parse(input);
+            return input;
+        }
+        catch (DateTimeParseException e){
+            System.out.println("Enter a valid date in YYYY-MM-DD format.");
+        }
+    }
 }
 
 public int getUserIntInput(String message, int min, int max){
