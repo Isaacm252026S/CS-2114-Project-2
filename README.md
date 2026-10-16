@@ -54,16 +54,16 @@ Some method calls in our first version did not match the declarations in `InputH
 
 The MVP is working, and our tests cover the important task, input, collection, and menu behavior. We can run the suite with Eclipse's coverage runner to see which lines are reached. The `DailyPlanner` and `FileHandler` ideas are not part of the current version, so they are optional stretch goals rather than unfinished MVP work.
 
-Before submitting, add the exact results from the latest Eclipse run: **Test results:** [Passed: __ / __; errors: __; failures: __; coverage: __%.]
+We didnt know if we had to do code testing covereage for the provided LinkedChain class, so if we have to do that that still needs to be done. 
 
 ## Next Steps
 
 Now that the MVP is working, our next project work is to choose a stretch goal and build it into the app we already have. We can keep using the current task classes and `TaskManager` instead of creating a separate program for the new feature.
 
-1. Decide whether to implement `DailyPlanner`, `FileHandler`, or both. Owner: [Name]
-2. For `DailyPlanner`, use tasks already stored in `TaskManager`. Recommend tasks based on their priority and estimated hours, and add a menu option in `ToDoApp` for the user to enter available time and see the recommendations. Owner: [Name]
-3. For `FileHandler`, save and load the existing school assignments, chores, and custom tasks. Connect saving and loading to the app menu, and make sure loaded tasks go back into the appropriate `TaskManager` lists. Owner: [Name]
-4. Test the new feature with normal data and edge cases, such as no tasks that fit the available time or a missing or invalid save file. If we build both goals, test that saved tasks can be loaded and then used by the planner. Owner: [Name]
+1. Decide whether to implement `DailyPlanner`, `FileHandler`, or both. Owner: [All]
+2. For `DailyPlanner`, use tasks already stored in `TaskManager`. Recommend tasks based on their priority and estimated hours, and add a menu option in `ToDoApp` for the user to enter available time and see the recommendations. Owner: [Rohan]
+3. For `FileHandler`, save and load the existing school assignments, chores, and custom tasks. Connect saving and loading to the app menu, and make sure loaded tasks go back into the appropriate `TaskManager` lists. Owner: [Issac]
+4. Test the new feature with normal data and edge cases, such as no tasks that fit the available time or a missing or invalid save file. If we build both goals, test that saved tasks can be loaded and then used by the planner. Owner: [Aaron]
 
 ## Stretch Goals
 
@@ -82,12 +82,12 @@ Fill in the names and adjust the descriptions to match the work each person actu
 - `TaskManager.java`: [Rohan] - [Implementation, revisions, and testing]
 - `InputHandler.java`: [Rohan] - [Implementation, revisions, and testing]
 - `ToDoApp.java`: [Rohan] - [Implementation, revisions, and testing]
-- `ChoreTest.java`: [Rohan] - [Tests written and verified]
-- `CustomTaskTest.java`: [Name(s)] - [Tests written and verified]
-- `InputHandlerTest.java`: [Name(s)] - [Tests written and verified]
-- `SchoolAssignmentTest.java`: [Name(s)] - [Tests written and verified]
-- `TaskManagerTest.java`: [Name(s)] - [Tests written and verified]
-- `ToDoAppTest.java`: [Name(s)] - [Tests written and verified]
+- `ChoreTest.java`: [Issac] - [Tests written and verified]
+- `CustomTaskTest.java`: [Issac] - [Tests written and verified]
+- `InputHandlerTest.java`: [Issac] - [Tests written and verified]
+- `SchoolAssignmentTest.java`: [Rohan] - [Tests written and verified]
+- `TaskManagerTest.java`: [Rohan] - [Tests written and verified]
+- `ToDoAppTest.java`: [Rohan] - [Tests written and verified]
 - `README.md`: [Name(s)] - [Documentation and reflection]
 
 ### Generative AI Attribution
