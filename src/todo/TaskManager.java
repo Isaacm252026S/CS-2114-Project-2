@@ -3,12 +3,12 @@ public class TaskManager
 {
 private LinkedChain<SchoolAssignment> schoolTasks;
 private LinkedChain<Chore> chores;
-private LinkedChain<CustomTask> CustomTasks;
+private LinkedChain<CustomTask> customTasks;
 
 public TaskManager(){
     schoolTasks = new LinkedChain<SchoolAssignment>();
     chores = new LinkedChain<Chore>();
-    CustomTasks = new LinkedChain<CustomTask>();
+    customTasks = new LinkedChain<CustomTask>();
 }
 
 public void addSchoolAssignment(SchoolAssignment task){
@@ -59,7 +59,7 @@ public boolean removeChore(int index){
     if (index < 0 || index >= chores.size()){
         return false;
     }
-    Chore task = chore.get(index);
+    Chore task = chores.get(index);
     return chores.remove(task);
 }
 

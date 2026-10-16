@@ -19,7 +19,7 @@ public String getStringInput(String message){
     return input;
 }
 
-public int getUserInput(String message, int min, int max){
+public int getUserIntInput(String message, int min, int max){
     while (true){
         System.out.print(message);
         String input = scanner.nextLine();

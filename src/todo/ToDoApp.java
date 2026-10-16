@@ -20,7 +20,7 @@ public void run(){
         System.out.println("3. Complete Task");
         System.out.println("4. Exit");
 
-        int choice = inputHandler.getUserInput("Choose an option: ", 1, 4);
+        int choice = inputHandler.getUserIntInput("Choose an option: ", 1, 4);
         if (choice == 1){
             addNewTask();
         }
@@ -32,7 +32,7 @@ public void run(){
         }
         else{
             running = false;
-            system.out.println("Goodbye!");
+            System.out.println("Goodbye!");
         }
     }
 }
@@ -54,9 +54,9 @@ public void addNewTask(){
         taskManager.addSchoolAssignment(task);
     }
     else if (type == 2){
-        double hours == inputHandler.getHoursInput("Estimated hours: "):
+        double hours = inputHandler.getHoursInput("Estimated hours: ");
         int priority = inputHandler.getUserIntInput("Priority (1-5): ", 1, 5);
-        Chore task = new chore(name, hours, priority);
+        Chore task = new Chore(name, hours, priority);
         taskManager.addChore(task);
     }
     else{
