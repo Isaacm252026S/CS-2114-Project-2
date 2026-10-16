@@ -88,7 +88,7 @@ Fill in the names and adjust the descriptions to match the work each person actu
 - `SchoolAssignmentTest.java`: [Rohan] - [Tests written and verified]
 - `TaskManagerTest.java`: [Rohan] - [Tests written and verified]
 - `ToDoAppTest.java`: [Rohan] - [Tests written and verified]
-- `README.md`: [Name(s)] - [Documentation and reflection]
+- `README.md`: [Rohan] - [Documentation and reflection]
 
 ### Generative AI Attribution
 
