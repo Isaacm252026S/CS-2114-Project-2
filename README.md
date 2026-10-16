@@ -15,7 +15,10 @@ A big part of the project was learning to reuse a generic data structure instead
 3. Choose **Project → Build Project**. If **Build Automatically** is enabled, Eclipse normally rebuilds when you save.
 4. In the Package Explorer, right-click `src/todo/ToDoApp.java` and choose **Run As → Java Application**.
 
-If Eclipse seems to be running old code, use **Project → Clean…**, select this project, and clean it before running again. Cleaning removes generated class files, not your Java source files; Eclipse rebuilds the class files from the saved source.
+
+### Run Tests and Check Coverage
+
+To run the tests, right-click the `todo.tests` package in the Package Explorer and choose **Run As → JUnit Test**. To see which application code the tests reach, choose **Coverage As → JUnit Test** instead. Run the test package, not `ToDoApp.java`, so the test cases execute. The JUnit view shows errors and failures, and the Coverage view shows covered and uncovered lines.
 
 ## Reflection
 
@@ -49,23 +52,18 @@ Some method calls in our first version did not match the declarations in `InputH
 
 ### 4. What still needs work?
 
-The menu includes options to add, view, and complete each kind of task, but we still need to verify the full application. The JUnit test files are in the project, though they do not have test methods yet. We need to write tests for the task classes, `TaskManager`, and input handling, then run through the whole menu flow.
+The MVP is working, and our tests cover the important task, input, collection, and menu behavior. We can run the suite with Eclipse's coverage runner to see which lines are reached. The `DailyPlanner` and `FileHandler` ideas are not part of the current version, so they are optional stretch goals rather than unfinished MVP work.
 
-The `DailyPlanner` and `FileHandler` ideas are not in the current version. We plan to focus on finishing and testing the required features before trying either stretch goal.
-
-Before submitting, update this line with the actual results: **Build and test results:** [Add the compile result, tests run, and any unfinished features or known bugs. If everything passes, say so here.]
+Before submitting, add the exact results from the latest Eclipse run: **Test results:** [Passed: __ / __; errors: __; failures: __; coverage: __%.]
 
 ## Next Steps
 
-Our first priority is to finish the minimum version and make sure it works. Add an owner beside each item once the group decides who is handling it.
+Now that the MVP is working, our next project work is to choose a stretch goal and build it into the app we already have. We can keep using the current task classes and `TaskManager` instead of creating a separate program for the new feature.
 
-1. Test adding, viewing, and completing every task type, including empty lists. Owner: [Name]
-2. Write `TaskManager` tests for adding, retrieving, removing, and invalid indexes. Owner: [Name]
-3. Write task class tests for constructors, getters, and string output. Owner: [Name]
-4. Test input handling for invalid numbers, out-of-range values, blank names, invalid assignment types and dates, and negative hours. Owner: [Name]
-5. Compile the project, fix any remaining errors, and run the available tests. Owner: [Name]
-6. Compare the finished README with the specification and update any details that changed. Owner: [Name]
-7. If the required features are done, choose a stretch goal and add tests for it. Owner: [Name]
+1. Decide whether to implement `DailyPlanner`, `FileHandler`, or both. Owner: [Name]
+2. For `DailyPlanner`, use tasks already stored in `TaskManager`. Recommend tasks based on their priority and estimated hours, and add a menu option in `ToDoApp` for the user to enter available time and see the recommendations. Owner: [Name]
+3. For `FileHandler`, save and load the existing school assignments, chores, and custom tasks. Connect saving and loading to the app menu, and make sure loaded tasks go back into the appropriate `TaskManager` lists. Owner: [Name]
+4. Test the new feature with normal data and edge cases, such as no tasks that fit the available time or a missing or invalid save file. If we build both goals, test that saved tasks can be loaded and then used by the planner. Owner: [Name]
 
 ## Stretch Goals
 
@@ -81,7 +79,7 @@ Fill in the names and adjust the descriptions to match the work each person actu
 - `SchoolAssignment.java`: [Rohan] - [Implementation, revisions, and testing]
 - `Chore.java`: [Rohan] - [Implementation, revisions, and testing]
 - `CustomTask.java`: [Rohan] - [Implementation, revisions, and testing]
-- `TaskManager.java`: [Rohan)] - [Implementation, revisions, and testing]
+- `TaskManager.java`: [Rohan] - [Implementation, revisions, and testing]
 - `InputHandler.java`: [Rohan] - [Implementation, revisions, and testing]
 - `ToDoApp.java`: [Rohan] - [Implementation, revisions, and testing]
 - `ChoreTest.java`: [Rohan] - [Tests written and verified]
@@ -94,4 +92,4 @@ Fill in the names and adjust the descriptions to match the work each person actu
 
 ### Generative AI Attribution
 
-We used ChatGPT to discuss Java implementation ideas, check method usage against the provided `LinkedChain` API, think through input validation, and help draft this README. We are responsible for reviewing the suggestions, understanding the final code, and making sure the project and tests work before submitting.
+We used ChatGPT to discuss Java implementation ideas, check method usage against the provided `LinkedChain` API, think through input validation, plan and finish our coverage tests, and help draft this README. We are responsible for reviewing the suggestions, understanding the final code, and making sure the project and tests work before submitting.
