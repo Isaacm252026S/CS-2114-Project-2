@@ -76,6 +76,29 @@ public class TaskManagerTest
 
 
     // ----------------------------------------------------------
+    /** Tests that the planner can access each task chain. */
+    public void testGetTaskChains()
+    {
+        SchoolAssignment assignment = new SchoolAssignment(
+            "Math Homework",
+            "homework",
+            "2026-10-20",
+            2.5,
+            3);
+        Chore chore = new Chore("Clean", 1.0, 1);
+        CustomTask customTask = new CustomTask("Call home", "Personal", 0.5, 2);
+
+        taskManager.addSchoolAssignment(assignment);
+        taskManager.addChore(chore);
+        taskManager.addCustomTask(customTask);
+
+        assertEquals(assignment, taskManager.getSchoolTasks().get(0));
+        assertEquals(chore, taskManager.getChores().get(0));
+        assertEquals(customTask, taskManager.getCustomTasks().get(0));
+    }
+
+
+    // ----------------------------------------------------------
     /** Tests removing a school assignment. */
     public void testRemoveSchoolAssignment()
     {

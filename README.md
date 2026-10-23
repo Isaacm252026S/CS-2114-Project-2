@@ -52,22 +52,17 @@ Some method calls in our first version did not match the declarations in `InputH
 
 ### 4. What still needs work?
 
-The MVP is working, and our tests cover the important task, input, collection, and menu behavior. We can run the suite with Eclipse's coverage runner to see which lines are reached. The `DailyPlanner` and `FileHandler` ideas are not part of the current version, so they are optional stretch goals rather than unfinished MVP work.
-
-We didnt know if we had to do code testing covereage for the provided LinkedChain class, so if we have to do that that still needs to be done. 
+The current version includes the task manager, menu, and a daily planner that recommends tasks based on priority and available time. The tests cover planner recommendations and the linked-chain operations used by the app. Run the suite with Eclipse's coverage runner to confirm the reported coverage in the course environment. Saving and loading tasks with a `FileHandler` remains a possible stretch goal.
 
 ## Next Steps
 
-Now that the MVP is working, our next project work is to choose a stretch goal and build it into the app we already have. We can keep using the current task classes and `TaskManager` instead of creating a separate program for the new feature.
+The daily planner is part of the app. A possible next feature is saving and loading tasks with a `FileHandler`, using the existing task classes and `TaskManager`.
 
-1. Decide whether to implement `DailyPlanner`, `FileHandler`, or both. Owner: [All]
-2. For `DailyPlanner`, use tasks already stored in `TaskManager`. Recommend tasks based on their priority and estimated hours, and add a menu option in `ToDoApp` for the user to enter available time and see the recommendations. Owner: [Rohan]
-3. For `FileHandler`, save and load the existing school assignments, chores, and custom tasks. Connect saving and loading to the app menu, and make sure loaded tasks go back into the appropriate `TaskManager` lists. Owner: [Issac]
-4. Test the new feature with normal data and edge cases, such as no tasks that fit the available time or a missing or invalid save file. If we build both goals, test that saved tasks can be loaded and then used by the planner. Owner: [Aaron]
+1. Decide whether to implement the `FileHandler` stretch goal. Owner: [All]
+2. Save and load the existing school assignments, chores, and custom tasks, and connect those operations to the app menu. Owner: [Issac]
+3. Test normal and edge cases, including missing or invalid save files. Owner: [Aaron]
 
 ## Stretch Goals
-
-**DailyPlanner (deferred):** Our original idea was a planner that recommends tasks based on priority and estimated completion time. If we add it, we will need to test task selection, available hours, and what happens when no task fits the time available.
 
 **FileHandler (deferred):** We also considered saving tasks to a file and loading them later. That would need tests for saving, loading, and handling missing or invalid files.
 

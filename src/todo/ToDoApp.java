@@ -33,7 +33,7 @@ public class ToDoApp
             System.out.println("5. Exit");
 
             int choice =
-                inputHandler.getUserIntInput("Choose an option: ", 1, 4);
+                inputHandler.getUserIntInput("Choose an option: ", 1, 5);
             if (choice == 1)
             {
                 addNewTask();

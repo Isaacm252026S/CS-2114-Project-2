@@ -6,6 +6,7 @@ import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import student.TestCase;
 import todo.Chore;
+import todo.CustomTask;
 import todo.TaskManager;
 import todo.ToDoApp;
 
@@ -47,10 +48,10 @@ public class ToDoAppTest
 
 
     // ----------------------------------------------------------
-    /** Tests that the app exits when the user chooses option 4. */
+    /** Tests that the app exits when the user chooses option 5. */
     public void testExit()
     {
-        setInput("4\n");
+        setInput("5\n");
         ToDoApp.main(new String[0]);
 
         assertTrue(capturedOutput.toString().contains("Goodbye!"));
@@ -61,7 +62,7 @@ public class ToDoAppTest
     /** Tests viewing the task lists when they are empty. */
     public void testViewEmptyTaskLists()
     {
-        setInput("2\n4\n");
+        setInput("2\n5\n");
         ToDoApp app = new ToDoApp();
         app.run();
 
@@ -76,7 +77,7 @@ public class ToDoAppTest
     /** Tests completing a task when its list is empty. */
     public void testCompleteTaskWhenListIsEmpty()
     {
-        setInput("3\n1\n4\n");
+        setInput("3\n1\n5\n");
         ToDoApp app = new ToDoApp();
         app.run();
 
@@ -89,7 +90,7 @@ public class ToDoAppTest
     /** Tests adding and completing a chore through the menu. */
     public void testAddAndCompleteChore()
     {
-        setInput("1\n2\nLaundry\n1.5\n2\n3\n2\n1\n4\n");
+        setInput("1\n2\nLaundry\n1.5\n2\n3\n2\n1\n5\n");
         ToDoApp app = new ToDoApp();
         app.run();
 
@@ -105,7 +106,7 @@ public class ToDoAppTest
     public void testAddAndCompleteSchoolAssignment()
     {
         setInput(
-            "1\n1\nEssay\nproject\n2026-10-25\n2.5\n3\n3\n1\n1\n4\n");
+            "1\n1\nEssay\nproject\n2026-10-25\n2.5\n3\n3\n1\n1\n5\n");
         ToDoApp app = new ToDoApp();
         app.run();
 
@@ -122,7 +123,7 @@ public class ToDoAppTest
     public void testAddAndCompleteCustomTask()
     {
         setInput(
-            "1\n3\nCall home\nPersonal\n0.5\n2\n3\n3\n1\n4\n");
+            "1\n3\nCall home\nPersonal\n0.5\n2\n3\n3\n1\n5\n");
         ToDoApp app = new ToDoApp();
         app.run();
 
@@ -138,7 +139,7 @@ public class ToDoAppTest
     /** Tests the message shown when removing a selected task fails. */
     public void testCouldNotCompleteTask()
     {
-        setInput("3\n2\n1\n4\n");
+        setInput("3\n2\n1\n5\n");
         TaskManager taskManager = new TaskManager()
         {
             public boolean removeChore(int index)
@@ -152,6 +153,27 @@ public class ToDoAppTest
 
         assertTrue(capturedOutput.toString().contains(
             "Could not complete task."));
+    }
+
+
+    // ----------------------------------------------------------
+    /** Tests using the daily planner from the menu. */
+    public void testDailyPlannerFromMenu()
+    {
+        setInput("4\n0\n1.5\n5\n");
+        TaskManager taskManager = new TaskManager();
+        taskManager.addChore(new Chore("Clean", 1.0, 2));
+        taskManager.addCustomTask(
+            new CustomTask("Call home", "Personal", 1.0, 4));
+        ToDoApp app = new ToDoApp(taskManager);
+        app.run();
+
+        String output = capturedOutput.toString();
+        assertTrue(output.contains("Please enter a positive number of hours."));
+        assertTrue(output.contains("===== DAILY PLAN ====="));
+        assertTrue(output.contains("Call home | Priority: 4 | Hours: 1.0"));
+        assertTrue(output.contains("Total planned hours: 1.0"));
+        assertTrue(output.contains("Goodbye!"));
     }
 
 }
