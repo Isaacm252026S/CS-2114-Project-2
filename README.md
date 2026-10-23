@@ -2,9 +2,9 @@
 
 ## About the Project
 
-This is a Java to-do list app for keeping track of school assignments, chores, and other personal tasks. From the menu, a user can add tasks, view them, or mark them complete.
+This is a Java to-do list app for keeping track of school assignments, chores, and other personal tasks. From the menu, a user can add tasks, view them, mark them complete, or get a daily plan based on task priority and available time.
 
-A big part of the project was learning to reuse a generic data structure instead of writing a different linked list for every task type. We use the staff-provided `LinkedChain<T>` for `SchoolAssignment`, `Chore`, and `CustomTask` objects. Each task class stores its own details, while `TaskManager` keeps track of the three chains. `ToDoApp` runs the menu, and `InputHandler` reads and checks the user's input. Assignment types are homework, exam, or project, and due dates must be entered as `YYYY-MM-DD`.
+A big part of the project was learning to reuse a generic data structure instead of writing a different linked list for every task type. We use the staff-provided `LinkedChain<T>` for `SchoolAssignment`, `Chore`, and `CustomTask` objects. Each task class stores its own details, while `TaskManager` keeps track of the three chains. `DailyPlanner` recommends tasks based on priority and estimated hours that fit into the available time. `ToDoApp` runs the five-option menu, and `InputHandler` reads and checks the user's input. Assignment types are homework, exam, or project, and due dates must be entered as `YYYY-MM-DD`.
 
 ## How to Build and Run
 
@@ -18,7 +18,7 @@ A big part of the project was learning to reuse a generic data structure instead
 
 ### Run Tests and Check Coverage
 
-To run the tests, right-click the `todo.tests` package in the Package Explorer and choose **Run As → JUnit Test**. To see which application code the tests reach, choose **Coverage As → JUnit Test** instead. Run the test package, not `ToDoApp.java`, so the test cases execute. The JUnit view shows errors and failures, and the Coverage view shows covered and uncovered lines.
+To run the tests, right-click the `todo.tests` package in the Package Explorer and choose **Run As → JUnit Test**. To see which application code the tests reach, choose **Coverage As → JUnit Test** instead. Run the whole test package, including `DailyPlannerTest` and `LinkedChainTest`, rather than a single test class, so coverage includes the planner and linked-chain implementation. The JUnit view shows errors and failures, and the Coverage view shows covered and uncovered lines and branches.
 
 ## Reflection
 
@@ -52,7 +52,7 @@ Some method calls in our first version did not match the declarations in `InputH
 
 ### 4. What still needs work?
 
-The current version includes the task manager, menu, and a daily planner that recommends tasks based on priority and available time. The tests cover planner recommendations and the linked-chain operations used by the app. Run the suite with Eclipse's coverage runner to confirm the reported coverage in the course environment. Saving and loading tasks with a `FileHandler` remains a possible stretch goal.
+The current version includes the task manager, menu, and a daily planner that recommends tasks based on priority and available time. Tests are included for task models, input handling, menu behavior, task management, daily planning, and `LinkedChain` operations. Run the suite with Eclipse's coverage runner to check the reported line and branch coverage in the course environment. Saving and loading tasks with a `FileHandler` remains a possible stretch goal.
 
 ## Next Steps
 
@@ -83,6 +83,8 @@ Fill in the names and adjust the descriptions to match the work each person actu
 - `SchoolAssignmentTest.java`: [Rohan] - [Tests written and verified]
 - `TaskManagerTest.java`: [Rohan] - [Tests written and verified]
 - `ToDoAppTest.java`: [Rohan] - [Tests written and verified]
+- `DailyPlannerTest.java`: [Rohan] - [Tests written and verified]
+- `LinkedChainTest.java`: [Rohan] - [Tests written and verified]
 - `README.md`: [Rohan] - [Documentation and reflection]
 
 ### Generative AI Attribution
