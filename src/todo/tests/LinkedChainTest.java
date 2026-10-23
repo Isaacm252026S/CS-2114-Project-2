@@ -94,7 +94,7 @@ public class LinkedChainTest
 
 
     // ----------------------------------------------------------
-    /** Tests removing entries by value from different positions. */
+    /** Tests removing entries by value from the head, middle, and end. */
     public void testRemoveEntry()
     {
         LinkedChain<String> chain = new LinkedChain<String>();
@@ -103,10 +103,11 @@ public class LinkedChainTest
         chain.addToEnd("last");
 
         assertFalse(chain.remove(null));
-        assertTrue(chain.remove("first"));
         assertTrue(chain.remove("middle"));
-        assertTrue(chain.remove("last"));
+        assertEquals("[first, last]", chain.toString());
         assertFalse(chain.remove("missing"));
+        assertTrue(chain.remove("first"));
+        assertTrue(chain.remove("last"));
         assertFalse(chain.remove(null));
         assertEquals(0, chain.size());
     }
