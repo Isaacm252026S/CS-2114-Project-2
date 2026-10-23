@@ -117,6 +117,20 @@ public class DailyPlannerTest
 
 
     // ----------------------------------------------------------
+    /** Tests that a task with NaN hours is skipped. */
+    public void testNaNTaskHoursAreSkipped()
+    {
+        taskManager.addCustomTask(
+            new CustomTask("Unknown time", "Personal", Double.NaN, 4));
+
+        String result = planner.recommend(5.0);
+
+        assertTrue(result.contains("No tasks fit your available time."));
+        assertFalse(result.contains("Unknown time |"));
+    }
+
+
+    // ----------------------------------------------------------
     /** Tests that lower-priority tasks are considered when others do not fit. */
     public void testPlannerContinuesAfterTaskDoesNotFit()
     {
@@ -138,8 +152,6 @@ public class DailyPlannerTest
     public void testInvalidTaskHoursAreSkipped()
     {
         taskManager.addChore(new Chore("No time", 0.0, 5));
-        taskManager.addCustomTask(
-            new CustomTask("Unknown time", "Personal", Double.NaN, 4));
         taskManager.addSchoolAssignment(new SchoolAssignment(
             "Infinite time",
             "exam",
@@ -151,7 +163,6 @@ public class DailyPlannerTest
 
         assertTrue(result.contains("No tasks fit your available time."));
         assertFalse(result.contains("No time |"));
-        assertFalse(result.contains("Unknown time |"));
         assertFalse(result.contains("Infinite time |"));
     }
 }
