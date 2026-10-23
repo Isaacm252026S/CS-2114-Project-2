@@ -81,7 +81,8 @@ public class DailyPlanner
         {
             for (int j = i + 1; j < total; j++)
             {
-                if (priorities[j] > priorities[i] || (priorities[j] == priorities[i] && hours[j] < hours[i]))
+                if (priorities[j] > priorities[i]
+                    || (priorities[j] == priorities[i] && hours[j] < hours[i]))
                 {
                     int tempPriority = priorities[i];
                     priorities[i] = priorities[j];

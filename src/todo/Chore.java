@@ -6,7 +6,6 @@ public class Chore
     private double estimatedHours;
     private int priority;
 
-
     public Chore(String name, double estimatedHours, int priority)
     {
         this.name = name;
@@ -19,6 +18,7 @@ public class Chore
     {
         return name;
     }
+
 
     public double getEstimatedHours()
     {
@@ -38,4 +38,3 @@ public class Chore
             + priority;
     }
 }
-
