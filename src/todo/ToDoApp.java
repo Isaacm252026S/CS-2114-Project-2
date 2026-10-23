@@ -29,7 +29,8 @@ public class ToDoApp
             System.out.println("1. Add Task");
             System.out.println("2. View Tasks");
             System.out.println("3. Complete Task");
-            System.out.println("4. Exit");
+            System.out.println("4. Daily Planner");
+            System.out.println("5. Exit");
 
             int choice =
                 inputHandler.getUserIntInput("Choose an option: ", 1, 4);
@@ -44,6 +45,10 @@ public class ToDoApp
             else if (choice == 3)
             {
                 markFinished();
+            }
+            else if (choice == 4)
+            {
+                showDailyPlanner();
             }
             else
             {
@@ -177,6 +182,23 @@ public class ToDoApp
         {
             System.out.println("Could not complete task.");
         }
+    }
+
+
+    private void showDailyPlanner()
+    {
+        System.out.println();
+        double hours = inputHandler
+            .getHoursInput("How many free hours do you have today? ");
+
+        while (hours <= 0 || Double.isNaN(hours) || Double.isInfinite(hours))
+        {
+            System.out.println("Please enter a positive number of hours.");
+            hours = inputHandler
+                .getHoursInput("How many free hours do you have today? ");
+        }
+        DailyPlanner planner = new DailyPlanner(taskManager);
+        System.out.println(planner.recommend(hours));
     }
 
 

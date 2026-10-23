@@ -141,4 +141,22 @@ public class TaskManager
             System.out.println((i + 1) + ". " + customTasks.get(i));
         }
     }
+
+
+    public LinkedChain<SchoolAssignment> getSchoolTasks()
+    {
+        return schoolTasks;
+    }
+
+
+    public LinkedChain<Chore> getChores()
+    {
+        return chores;
+    }
+
+
+    public LinkedChain<CustomTask> getCustomTasks()
+    {
+        return customTasks;
+    }
 }
