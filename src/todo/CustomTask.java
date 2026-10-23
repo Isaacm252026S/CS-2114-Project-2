@@ -1,5 +1,11 @@
 package todo;
 
+/**
+ * Stores the details for a user-defined task.
+ *
+ * @author Rohan Sampath
+ * @version Oct 23, 2026
+ */
 public class CustomTask
 {
     private String name;

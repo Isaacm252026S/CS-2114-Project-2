@@ -3,6 +3,9 @@ package todo;
 
 /**
  * Recommends tasks based on priority and available time.
+ *
+ * @author Rohan Sampath
+ * @version Oct 23, 2026
  */
 public class DailyPlanner
 {

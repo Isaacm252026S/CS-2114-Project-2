@@ -1,5 +1,11 @@
 package todo;
 
+/**
+ * Runs the to-do list menu and handles task actions.
+ *
+ * @author Rohan Sampath
+ * @version Oct 23, 2026
+ */
 public class ToDoApp
 {
     private TaskManager taskManager;

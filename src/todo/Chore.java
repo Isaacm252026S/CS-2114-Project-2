@@ -1,5 +1,11 @@
 package todo;
 
+/**
+ * Stores the details for a chore.
+ *
+ * @author Rohan Sampath
+ * @version Oct 23, 2026
+ */
 public class Chore
 {
     private String name;

@@ -84,6 +84,7 @@ Fill in the names and adjust the descriptions to match the work each person actu
 - `TaskManagerTest.java`: [Rohan] - [Tests written and verified]
 - `ToDoAppTest.java`: [Rohan] - [Tests written and verified]
 - `DailyPlannerTest.java`: [Rohan] - [Tests written and verified]
+- `DailyPlanner.java`: [Rohan] - [Implementation, revisions, and testing]
 - `LinkedChainTest.java`: [Rohan] - [Tests written and verified]
 - `README.md`: [Rohan] - [Documentation and reflection]
 

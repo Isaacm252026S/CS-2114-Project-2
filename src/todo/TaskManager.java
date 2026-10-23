@@ -1,5 +1,11 @@
 package todo;
 
+/**
+ * Stores and manages the application's task lists.
+ *
+ * @author Rohan Sampath
+ * @version Oct 23, 2026
+ */
 public class TaskManager
 {
     private LinkedChain<SchoolAssignment> schoolTasks;

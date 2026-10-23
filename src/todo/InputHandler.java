@@ -5,6 +5,12 @@ import java.time.format.DateTimeParseException;
 import java.util.Locale;
 import java.util.Scanner;
 
+/**
+ * Reads and validates input from the user.
+ *
+ * @author Rohan Sampath
+ * @version Oct 23, 2026
+ */
 public class InputHandler
 {
     private Scanner scanner;
