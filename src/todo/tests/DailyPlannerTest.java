@@ -87,6 +87,22 @@ public class DailyPlannerTest
 
 
     // ----------------------------------------------------------
+    /** Tests that same-priority tasks stay in order when hours do not improve. */
+    public void testSamePriorityTasksStayInOrderWhenLaterTaskTakesLonger()
+    {
+        taskManager.addChore(new Chore("Short chore", 1.0, 3));
+        taskManager.addCustomTask(
+            new CustomTask("Long task", "Personal", 2.0, 3));
+
+        String result = planner.recommend(4.0);
+
+        assertTrue(result.indexOf("Short chore") < result.indexOf("Long task"));
+        assertTrue(result.contains("Short chore | Priority: 3 | Hours: 1.0"));
+        assertTrue(result.contains("Long task | Priority: 3 | Hours: 2.0"));
+    }
+
+
+    // ----------------------------------------------------------
     /** Tests that a task is skipped when it does not fit the time left. */
     public void testNoTasksFitAvailableTime()
     {
